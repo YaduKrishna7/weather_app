@@ -11,14 +11,28 @@ load_dotenv()
 
 def signup_view(request):
     if request.method == 'POST':
+        errors={}
         email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
+        if password != confirm_password:
+            errors["confirm_password"]="Password do not match!"
+            # return render(request,'signup.html')
+        
+        if CustomUser.objects.filter(username=username).exists():
+            errors["username"]="Username already taken!"
+            # messages.error(request,"Username already taken!")
+            # return render(request,'signup.html')
+        
         if CustomUser.objects.filter(email=email).exists():
-            messages.error(request, 'Email is already taken')
-            print('email already taken')
-            return redirect('signup')
+            errors["email"]="Email is already taken"
+            # messages.error(request, 'Email is already taken')
+            # print('email already taken')
+            # return redirect('signup')
+        
+        if errors:
+            return render(request,'signup.html',{'errors':errors})
         
         if password==confirm_password:
             user = CustomUser.objects.create_user(
@@ -26,8 +40,6 @@ def signup_view(request):
             username=username,
             password=password,
             )  
-            user.set_password(password)
-            user.save()
             
             print('created')
             messages.success(request, 'Account created successfully. Please log in.')

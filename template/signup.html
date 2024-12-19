@@ -18,6 +18,9 @@
             required
             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
+          {% if errors.email %}
+              <p style="color: red;">{{errors.email}}</p>
+          {% endif %}
         </div>
       </div>
       
@@ -30,7 +33,10 @@
             id="username"
             required
             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-          />
+          /> 
+          {% if errors.username %}
+              <p style="color: red;">{{errors.username}}</p>
+          {% endif %}
         </div>
       </div>
 
@@ -44,6 +50,9 @@
             required
             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
+          {% if errors.password %}
+              <p style="color: red;">{{errors.password}}</p>
+          {% endif %}
         </div>
       </div>
       
@@ -57,16 +66,19 @@
             required
             class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
+          {% if errors.confirm_password %}
+              <p style="color: red;">{{errors.confirm_password}}</p>
+          {% endif %}
         </div>
       </div>
 
-      <div>
+      <!-- <div>
         <div class="flex items-center justify-between">
           <div class="text-sm">
             <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div>
         <button

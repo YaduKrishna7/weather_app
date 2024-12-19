@@ -1,0 +1,68 @@
+{% extends "home.html" %}
+{%block content%}     
+<nav class="bg-blue-900 mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 relative flex h-16 items-center justify-between" >
+
+    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start hidden sm:ml-3 sm:block flex space-x-4">
+        <div class="flex shrink-0 items-center">
+            <div class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"  aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+            </div>
+            <img class="rounded-full w-10" src="https://play-lh.googleusercontent.com/WHVv_pVDetZqwAsjUAdRfEXe1RFXJ__39sHlIHDsRpNPwAL_9FXVrrnOfV3_cSccJes">
+         <a class="rounded-md px-3 py-2 text-lg font-bold text-gray-400 ">Weather</a>
+        </div>
+    </div>
+    <div class="ml-3">
+        <a href={% url 'home' %} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">Home</a>
+      {% if user.is_authenticated %}
+      {% comment %} <a href={% url 'home' %} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">Home</a> {% endcomment %}
+        <a href={% url 'signout'%} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">SignOut</a> 
+        {% else %}
+        {% comment %} <a href={% url 'home' %} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">Home</a> {% endcomment %}
+        <a href={% url 'signin' %} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">signin</a>
+        <a href={% url 'signup' %} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">signup</a>
+        {% endif %}
+              </button>
+                {% comment %} <div class="relative inline-block text-left">
+                  <button class="hidden"class="text-black hover:text-black px-4 py-2 flex justify-between items-center" id="dropdown-button" aria-expanded="false" aria-haspopup="true">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+                      </svg>
+                      
+                 <svg class="w-4 h-4 text-gray-200 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="(link unavailable)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>  {% endcomment %}
+                </button>
+                </div>
+              </div>
+            </div>
+          
+          <script>
+            const dropdownButton = document.getElementById('dropdown-button');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+          
+            dropdownButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+            }); 
+          </script> 
+          
+          
+        
+</nav>
+
+
+{% endblock content%} 
+
+
+
+
+
+
+
+
+{% comment %} <a href={% url 'signout'%} class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-black hover:text-white">SignOut</a> {% endcomment %}
+            {% comment %} <div class="relative inline-block text-left"> {% endcomment %}
+              {% comment %} <a href="#" class="text-lg font-bold text-white">Logo</a>
+              <button class="md:hidden flex justify-center w-8 h-8 bg-gray-900 rounded hover:bg-gray-700"> {% endcomment %}
+                {% comment %} <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="(link unavailable)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg> {% endcomment %}
+ {% comment %} <div class="hidden md:flex items-center"> {% endcomment %}
+                {% comment %} <a href="" class="text-gray-200 hover:text-white px-4 py-2">Home</a>
+                <a href="#" class="text-gray-200 hover:text-white px-4 py-2">About</a> {% endcomment %}

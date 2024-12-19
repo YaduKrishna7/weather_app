@@ -1,0 +1,49 @@
+{% extends "home.html" %}
+{% block content %}
+{% include "navbar.html" %}
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="w-full h-full flex items-center justify-center p-10">
+        <div class="relative w-1/2 flex items-center">
+        
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
+                <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
+            </svg>
+            
+            
+            <input
+                class="w-full bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow hover:shadow-lg"
+                placeholder="Search"
+                name="city"
+            />
+            <button type="submit" class="absolute right-0 top-2.5 bg-blue-500 text-white rounded-md px-4 py-2 ml-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                Submit
+            </button>
+          
+        </div>
+        
+    </div>
+    <div class="m-10 items-center flex flex-col md:flex-row md:justify-center">
+        <div class="w-64 md:mr-20 mb-10 transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105 cursor-pointer border flex flex-col justify-center items-center text-center p-6">
+            <div class="text-md font-bold flex flex-col text-gray-900"><span class="uppercase">{{city}}</span> <span class="font-normal text-gray-700 text-sm">{{day}}</span></div>
+            <div class="w-32 h-32 flex items-center justify-center">
+                <svg width="95" height="72" viewBox="0 0 95 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <img src="http://openweathermap.org/img/w/{{icon}}.png" alt="weather icon" width="400px"/>
+                    
+                <defs>
+                <clipPath id="clip0">
+                <rect width="95" height="72" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+            </div>
+            <p class="text-gray-700 mb-2">{{description}}</p>
+            <div class="text-3xl font-bold text-gray-900 mb-6">{{temp}}º</div>
+        </div>
+    
+       
+    </div>
+</form>
+<br>
+{% endblock content %}
